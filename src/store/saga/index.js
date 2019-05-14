@@ -1,8 +1,8 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
-import { addUserGithub } from './users';
-import { Types as GitHubTypes } from '../redux/users';
+import { loadingUser } from './rules';
+import { Types as RulesTypes } from '../redux/rules';
 
 export default function* rootSaga() {
-  yield all([takeLatest(GitHubTypes.ADD_REQUEST, addUserGithub)]);
+  yield all([takeLatest(RulesTypes.ADD_RULES, loadingUser)]);
 }

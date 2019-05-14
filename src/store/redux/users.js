@@ -17,13 +17,10 @@ export const Creators = {
     payload: { username },
   }),
 
-  addUserSuccess: (data) => {
-    toast.success(`Add user ${data.name}!!!`);
-    return {
-      type: Types.ADD_SUCCESS,
-      payload: { data },
-    };
-  },
+  addUserSuccess: data => ({
+    type: Types.ADD_SUCCESS,
+    payload: { data },
+  }),
 
   addUserFailure: (error) => {
     toast.error(error);
@@ -33,13 +30,10 @@ export const Creators = {
     };
   },
 
-  removeUserRequest: (id) => {
-    toast.error('User remove');
-    return {
-      type: Types.REMOVE_REQUEST,
-      payload: { id },
-    };
-  },
+  removeUser: id => ({
+    type: Types.REMOVE_REQUEST,
+    payload: { id },
+  }),
 };
 
 const INITIAL_STATE = {
@@ -57,17 +51,19 @@ export default function users(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: null,
-        data: [...state.data, action.payload.data],
+        data: [...state.data, ...action.payload.data],
       };
     case Types.ADD_FAILURE:
       return { ...state, loading: false, error: action.payload.error };
     case Types.REMOVE_REQUEST:
+      toast.success('User removed!');
       return {
         ...state,
         loading: false,
         error: null,
         data: [...state.data.filter(user => user.id !== action.payload.id)],
       };
+
     default:
       return state;
   }

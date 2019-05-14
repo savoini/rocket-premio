@@ -3,7 +3,7 @@ export const Types = {
 };
 
 export const Creators = {
-  addRule: (repository, stars, forks) => ({
+  addRule: ({ repository, stars, forks }) => ({
     type: Types.ADD_RULES,
     payload: { repository, stars, forks },
   }),

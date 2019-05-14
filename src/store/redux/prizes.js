@@ -1,10 +1,12 @@
+import { toast } from 'react-toastify';
+
 export const Types = {
   ADD_PRIZE: '@prize/ADD_PRIZE',
   REMOVE_PRIZE: '@prize/REMOVE_PRIZE',
 };
 
 export const Creators = {
-  addPrize: name => ({
+  addPrize: ({ name }) => ({
     type: Types.ADD_PRIZE,
     payload: { name },
   }),
@@ -15,14 +17,16 @@ export const Creators = {
   }),
 };
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = [];
 
 export default function prizes(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_PRIZE:
-      return { latitude: action.payload.latitude, longitude: action.payload.longitude };
+      toast.success(`${action.payload.name} successfully added!!!`);
+      return [...state, { id: Math.random(), name: action.payload.name }];
     case Types.REMOVE_PRIZE:
-      return INITIAL_STATE;
+      toast.success("The Prize removed from the draw list :'( ");
+      return [...state.filter(prize => prize.id !== action.payload.id)];
     default:
       return state;
   }

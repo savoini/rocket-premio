@@ -1,33 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import { Creators as RulesActions } from '../../store/redux/rules';
+
+import { Container, Group } from '../../styles/global';
 
 const schema = Yup.object().shape({
   repository: Yup.string().required(),
 });
 
-const initialData = {
-  repository: 'Rocketseat/unform',
-  stars: true,
-  forks: true,
-};
+function Rules({ rules, addRule }) {
+  const [stars, setStars] = useState(false);
+  const [forks, setForks] = useState(false);
 
-function Rules() {
   function handleSubmit(data) {
-    console.log(data);
+    addRule({
+      ...data,
+      stars,
+      forks,
+    });
   }
 
   return (
-    <>
+    <Container>
       <h2>Rules</h2>
-      <Form schema={schema} initialData={initialData} onSubmit={handleSubmit}>
-        <Input name="repository" label="Repository:" placeholder="Name of Repository" />
-        <Input name="stars" type="checkbox" value="stars" label="Star" />
-        <Input name="forks" type="checkbox" value="forks" label="Fork" />
-        <button type="submit">Adicionar</button>
+      <Form schema={schema} initialData={rules} onSubmit={handleSubmit}>
+        <Group>
+          <Input type="text" name="repository" label="Repository:" placeholder="user/repository" />
+        </Group>
+        <Input
+          name="stars"
+          type="checkbox"
+          checked={stars}
+          label="Star"
+          onChange={e => setStars(e.target.checked)}
+        />
+        <Input
+          name="forks"
+          type="checkbox"
+          checked={forks}
+          label="Fork"
+          onChange={e => setForks(e.target.checked)}
+        />
+        <button type="submit">Load users</button>
       </Form>
-    </>
+    </Container>
   );
 }
 
-export default Rules;
+Rules.propTypes = {
+  addRule: PropTypes.func.isRequired,
+  rules: PropTypes.shape({}).isRequired,
+};
+
+const mapStateToProps = state => ({
+  rules: state.rules,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(RulesActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Rules);

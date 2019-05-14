@@ -14,7 +14,7 @@ function App() {
     <Provider store={store}>
       <Global />
       <Router />
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={5000} />
     </Provider>
   );
 }
