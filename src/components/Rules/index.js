@@ -14,8 +14,8 @@ const schema = Yup.object().shape({
 });
 
 function Rules({ rules, addRule }) {
-  const [stars, setStars] = useState(false);
-  const [forks, setForks] = useState(false);
+  const [stars, setStars] = useState(rules.stars);
+  const [forks, setForks] = useState(rules.forks);
 
   function handleSubmit(data) {
     addRule({
