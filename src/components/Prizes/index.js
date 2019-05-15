@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as Yup from 'yup';
-import { Form, Input } from '@rocketseat/unform';
+import { Form, Input, useField } from '@rocketseat/unform';
 import { Creators as PrizesActions } from '../../store/redux/prizes';
 import { Container, Group } from '../../styles/global';
 
@@ -12,7 +12,7 @@ import ReactSelect from '../ReactSelect';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Prize Name is required'),
-  // amount: Yup.array().required('Amount is required'),
+  amount: Yup.array().required('Amount is required'),
 });
 
 const amounts = [
@@ -26,7 +26,12 @@ const amounts = [
 function Prizes({ addPrize }) {
   const initialData = {
     name: '',
-    amount: null,
+    amount: [
+      {
+        value: 1,
+        label: '1',
+      },
+    ],
   };
 
   function handleSubmit(data) {
@@ -41,7 +46,7 @@ function Prizes({ addPrize }) {
         <Group>
           <Input name="name" type="text" label="Prize" placeholder="Prize name" />
         </Group>
-        <ReactSelect name="amount" options={amounts} />
+        <ReactSelect name="amount" options={amounts} label="Amount" />
         <button type="submit">Add Prize</button>
       </Form>
     </Container>

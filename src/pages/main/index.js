@@ -33,27 +33,18 @@ function Main({
   return (
     <Fragment>
       <ShowModal />
-      <Container style={{ width: '98%', textAlign: 'center', color: 'rgb(113,89,193)' }}>
-        <h1>Rocket Prizes</h1>
-      </Container>
-      <Header>
-        <div style={{ minWidth: '350px' }}>
-          <Prizes />
-          <Rules />
-        </div>
-        <SideBar>
-          <ListPrizes />
-        </SideBar>
-      </Header>
-      <Users />
       <Container
         style={{
           width: '98%',
+          textAlign: 'center',
           color: 'rgb(113,89,193)',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
         }}
       >
+        <h1>Rocket Prizes</h1>
         <form onSubmit={e => clickHandle(e)}>
           <button type="submit">
             <i className="fa fa-cube" aria-hidden="true" />
@@ -61,6 +52,12 @@ function Main({
           </button>
         </form>
       </Container>
+      <Header>
+        <Prizes />
+        <Rules />
+      </Header>
+      <ListPrizes />
+      <Users />
     </Fragment>
   );
 }
@@ -68,7 +65,7 @@ function Main({
 Main.propTypes = {
   users: PropTypes.shape({}).isRequired,
   prizes: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  generate: PropTypes.shape({}).isRequired,
+  generate: PropTypes.func.isRequired,
   history: PropTypes.shape({}).isRequired,
 };
 

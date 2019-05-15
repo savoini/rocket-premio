@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
       height: 52px;
       width: 100%;
       min-width: 200px;
-      max-width: 500px;
+      max-width: 650px;
       color: #FFF;
       font-size: 18px;
       background: rgb(113, 89, 193, 0.8);
@@ -105,6 +105,7 @@ export const Group = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   margin: 10px;
   border: 1px;

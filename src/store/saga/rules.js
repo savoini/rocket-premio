@@ -80,7 +80,7 @@ export function* loadingUser(action) {
 
     yield put(UsersActions.addUserSuccess(users));
   } catch (error) {
-    yield put(UsersActions.addUserFailure(`Erro ao adicionar usuário: ${error.message}`));
+    yield put(UsersActions.addUserFailure('Error in loading users!'));
   } finally {
     yield put(ModalActions.loading(false));
   }

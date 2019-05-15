@@ -25,7 +25,7 @@ export const Creators = {
   addUserFailure: (error) => {
     toast.error(error);
     return {
-      type: Types.ADD_FAILURE,
+      type: Types.ADD_ERROR,
       payload: { error },
     };
   },
@@ -53,7 +53,7 @@ export default function users(state = INITIAL_STATE, action) {
         error: null,
         data: [...state.data, ...action.payload.data],
       };
-    case Types.ADD_FAILURE:
+    case Types.ADD_ERROR:
       return { ...state, loading: false, error: action.payload.error };
     case Types.REMOVE_REQUEST:
       toast.success('User removed!');

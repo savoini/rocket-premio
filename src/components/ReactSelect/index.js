@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useField } from '@rocketseat/unform';
 import Select from 'react-select';
 
-function ReactSelect({ name, options, multiple }) {
+function ReactSelect({
+  name, options, label, multiple,
+}) {
   const {
     fieldName, registerField, defaultValue, error,
   } = useField(name);
@@ -22,6 +25,8 @@ function ReactSelect({ name, options, multiple }) {
 
   return (
     <>
+      {label && <label htmlFor="techs">{label}</label>}
+
       <Select
         name="techs"
         options={options}
@@ -42,6 +47,7 @@ ReactSelect.defaultProps = {
 
 ReactSelect.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };

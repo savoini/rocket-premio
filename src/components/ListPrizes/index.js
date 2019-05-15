@@ -6,30 +6,40 @@ import { bindActionCreators } from 'redux';
 
 import { Creators as PrizesActions } from '../../store/redux/prizes';
 
-import {
-  Container, List, ListItem, Item, Action,
-} from '../../styles/global';
+import { Container, Action } from '../../styles/global';
 
 function ListPrizes({ prizes, removePrize }) {
   return (
-    <Container>
+    <Container style={{ width: '99%', display: 'center', alignItems: 'center' }}>
       <h2>List of Prizes</h2>
-      <List>
-        {prizes
-          && prizes.map(prize => (
-            <ListItem key={prize.id}>
-              <Item>{prize.name}</Item>
-              <Action>
-                <i
-                  className="fa fa-times-circle"
-                  aria-hidden="true"
-                  style={{ color: '#F00' }}
-                  onClick={() => removePrize(prize.id)}
-                />
-              </Action>
-            </ListItem>
-          ))}
-      </List>
+      <table style={{ width: '90%' }}>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Prize</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {prizes
+            && prizes.map(prize => (
+              <tr key={prize.id}>
+                <td>{prize.amount}</td>
+                <td>{prize.name}</td>
+                <td style={{ display: 'flex', alignItems: 'center' }}>
+                  <Action>
+                    <i
+                      className="fa fa-times-circle"
+                      aria-hidden="true"
+                      style={{ color: '#F00' }}
+                      onClick={() => removePrize(prize.id)}
+                    />
+                  </Action>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </Container>
   );
 }

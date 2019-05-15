@@ -30,7 +30,7 @@ class Users extends Component {
     return (
       <>
         {users.data.length > 0 && (
-          <Container>
+          <Container style={{ width: '99%' }}>
             <h2>List of valid users</h2>
             <List>
               {users.data.slice(begin, end).map(user => (

@@ -68,7 +68,7 @@ function Lottery({ lottery }) {
             background: 'rgb(113,89,193,0.8)',
             borderRadius: '10px',
             border: '2px',
-            marginTop: '10px',
+            marginTop: '100px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
