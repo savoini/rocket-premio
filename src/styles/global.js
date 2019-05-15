@@ -30,6 +30,10 @@ const GlobalStyle = createGlobalStyle`
       margin-bottom: 5px;
     }
 
+    a:link {
+      text-decoration:none;
+    }
+
     input[type='text'] {
       height: 40px;
       width: 100%;
@@ -66,6 +70,19 @@ const GlobalStyle = createGlobalStyle`
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
+
+    .pagination {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pagination li {
+      font-size: 20px;
+      padding: 10px;
+    }
+
 
 `;
 
@@ -121,7 +138,7 @@ export const List = styled.div`
 export const ListItem = styled.div`
   list-style: none;
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   margin: 5px;
   padding: 10px;
   display: flex;

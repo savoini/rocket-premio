@@ -10,14 +10,25 @@ function Lottery({ lottery }) {
   return (
     <Fragment>
       <Container style={{ width: '98%', textAlign: 'center', color: 'rgb(113,89,193)' }}>
-        <h1>Rocket Prizes</h1>
+        <h1>
+          <Link to="/">Rocket Prizes</Link>
+        </h1>
       </Container>
-      <Container style={{ width: '98%', textAlign: 'center', color: 'rgb(113,89,193)' }}>
+      <Container
+        style={{
+          width: '98%',
+          textAlign: 'center',
+          color: 'rgb(113,89,193)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <h1>
           <i className="fa fa-cube" aria-hidden="true" />
           Winners
         </h1>
-        <table>
+        <table style={{ width: '80%' }}>
           <thead>
             <tr>
               <th>Prize</th>
@@ -34,13 +45,37 @@ function Lottery({ lottery }) {
                     <Avatar src={winner.user.avatar} alt={winner.user.login}>
                       <img src={winner.user.avatar} alt={winner.user.login} />
                     </Avatar>
-                    <Item>{winner.user.login}</Item>
+                    <Item>
+                      {winner.user.login}
+                      <span>
+                        <a href={winner.user.html_url} target="_blank" rel="noopener noreferrer">
+                          {winner.user.html_url}
+                        </a>
+                      </span>
+                    </Item>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
-        <Link to="/">Go back</Link>
+        <Link
+          to="/"
+          style={{
+            height: '52px',
+            width: '500px',
+            color: '#FFF',
+            fontSize: '18px',
+            background: 'rgb(113,89,193,0.8)',
+            borderRadius: '10px',
+            border: '2px',
+            marginTop: '10px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          Go back
+        </Link>
       </Container>
     </Fragment>
   );

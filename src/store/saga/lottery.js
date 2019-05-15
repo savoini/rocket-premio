@@ -1,19 +1,19 @@
 import { put, select } from 'redux-saga/effects';
 import { Creators as LotteryActions } from '../redux/lottery';
+import { Creators as ModalActions } from '../redux/modal';
 
 export function* lottery() {
   try {
+    yield put(ModalActions.loading(true));
+
     const users = yield select(state => state.users.data);
-    console.log(users);
 
     if (users) {
       const prizes = yield select(state => state.prizes);
-      console.log(prizes);
 
       if (prizes) {
         const winners = prizes.map((prize) => {
           const user = users[Math.floor(Math.random() * (users.length - 0)) + 0];
-          console.log(user);
 
           return {
             user,
@@ -35,5 +35,7 @@ export function* lottery() {
     }
   } catch (error) {
     yield put(LotteryActions.lotteryError(error));
+  } finally {
+    yield put(ModalActions.loading(false));
   }
 }

@@ -12,9 +12,9 @@ export const Types = {
  * Actions
  */
 export const Creators = {
-  addUserRequest: username => ({
+  addUserRequest: () => ({
     type: Types.ADD_REQUEST,
-    payload: { username },
+    payload: {},
   }),
 
   addUserSuccess: data => ({
@@ -45,7 +45,7 @@ const INITIAL_STATE = {
 export default function users(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_REQUEST:
-      return { ...state, loading: true, error: null };
+      return { data: [], loading: true, error: null };
     case Types.ADD_SUCCESS:
       return {
         ...state,

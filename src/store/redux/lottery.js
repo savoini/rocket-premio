@@ -35,10 +35,9 @@ export default function lottery(state = INITIAL_STATE, action) {
       return { ...state, loading: true, error: null };
     case Types.LOTTERY_SUCCESS:
       return {
-        ...state,
         loading: false,
         error: null,
-        winners: [...state.winners, ...action.payload.winners],
+        winners: [...action.payload.winners],
       };
     case Types.LOTTERY_ERROR:
       return { ...state, loading: false, error: action.payload.error };

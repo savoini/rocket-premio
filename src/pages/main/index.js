@@ -9,6 +9,7 @@ import Prizes from '../../components/Prizes';
 import ListPrizes from '../../components/ListPrizes';
 import Rules from '../../components/Rules';
 import Users from '../../components/Users';
+import ShowModal from '../../components/ShowModal';
 
 import { Container, Header, SideBar } from '../../styles/global';
 
@@ -31,6 +32,7 @@ function Main({
 
   return (
     <Fragment>
+      <ShowModal />
       <Container style={{ width: '98%', textAlign: 'center', color: 'rgb(113,89,193)' }}>
         <h1>Rocket Prizes</h1>
       </Container>
