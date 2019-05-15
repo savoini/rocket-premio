@@ -47,6 +47,9 @@ export function* loadingUser(action) {
     const { headers } = yield call(api.get, `/repos/${repository}/stargazers`);
     console.log(headers.link.split(','));
 
+    const response = yield call(api.get, `/repos/${repository}`);
+    console.log(response.data);
+
     const [usersStars] = yield [call(loadingStars, repository)];
     const { meudado } = usersStars;
     console.log(meudado);

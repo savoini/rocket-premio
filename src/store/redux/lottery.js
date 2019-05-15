@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export const Types = {
   LOTTERY_REQUEST: '@lottery/LOTTERY_REQUEST',
   LOTTERY_SUCCESS: '@lottery/LOTTERY_SUCCESS',

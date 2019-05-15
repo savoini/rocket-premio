@@ -12,7 +12,7 @@ import ReactSelect from '../ReactSelect';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Prize Name is required'),
-  amount: Yup.array().required('Amount is required'),
+  // amount: Yup.array().required('Amount is required'),
 });
 
 const amounts = [

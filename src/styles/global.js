@@ -44,11 +44,11 @@ const GlobalStyle = createGlobalStyle`
       margin: 15px;
     }
 
-
     button {
       height: 52px;
       width: 100%;
-      max-width: 200px;
+      min-width: 200px;
+      max-width: 500px;
       color: #FFF;
       font-size: 18px;
       background: rgb(113, 89, 193, 0.8);
@@ -56,6 +56,17 @@ const GlobalStyle = createGlobalStyle`
       border: 2px;
       margin-top: 10px;
     }
+
+    table, th, td {
+
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
 `;
 
 export const Header = styled.div`

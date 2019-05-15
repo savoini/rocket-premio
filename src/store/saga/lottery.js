@@ -3,12 +3,17 @@ import { Creators as LotteryActions } from '../redux/lottery';
 
 export function* lottery() {
   try {
-    const users = select(state => state.users.data);
+    const users = yield select(state => state.users.data);
+    console.log(users);
+
     if (users) {
-      const prizes = select(state => state.prizes);
+      const prizes = yield select(state => state.prizes);
+      console.log(prizes);
+
       if (prizes) {
         const winners = prizes.map((prize) => {
           const user = users[Math.floor(Math.random() * (users.length - 0)) + 0];
+          console.log(user);
 
           return {
             user,
@@ -19,7 +24,9 @@ export function* lottery() {
           };
         });
 
-        yield put(LotteryActions.lotterySucces(winners));
+        console.log(winners);
+
+        yield put(LotteryActions.lotterySuccess(winners));
       } else {
         yield put(LotteryActions.lotteryError('There are no prizes to raffle'));
       }
