@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { Container, Item, Avatar } from '../../styles/global';
 
 function Lottery({ lottery }) {
-  console.log(lottery);
   return (
     <Fragment>
       <Container style={{ width: '98%', textAlign: 'center', color: 'rgb(113,89,193)' }}>
@@ -41,7 +40,7 @@ function Lottery({ lottery }) {
               && lottery.winners.map(winner => (
                 <tr key={winner.user.id}>
                   <td>{winner.prize.name}</td>
-                  <td style={{ display: 'flex', alignItems: 'center' }}>
+                  <td style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Avatar src={winner.user.avatar} alt={winner.user.login}>
                       <img src={winner.user.avatar} alt={winner.user.login} />
                     </Avatar>

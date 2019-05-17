@@ -6,9 +6,9 @@ export const Types = {
 };
 
 export const Creators = {
-  addPrize: ({ name }) => ({
+  addPrize: ({ name, amount }) => ({
     type: Types.ADD_PRIZE,
-    payload: { name },
+    payload: { name, amount },
   }),
 
   removePrize: id => ({
@@ -23,7 +23,10 @@ export default function prizes(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_PRIZE:
       toast.success(`${action.payload.name} successfully added!!!`);
-      return [...state, { id: Math.random(), name: action.payload.name }];
+      return [
+        ...state,
+        { id: Math.random(), name: action.payload.name, amount: action.payload.amount },
+      ];
     case Types.REMOVE_PRIZE:
       toast.success("The Prize removed from the draw list :'( ");
       return [...state.filter(prize => prize.id !== action.payload.id)];

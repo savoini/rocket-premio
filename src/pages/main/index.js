@@ -11,7 +11,7 @@ import Rules from '../../components/Rules';
 import Users from '../../components/Users';
 import ShowModal from '../../components/ShowModal';
 
-import { Container, Header, SideBar } from '../../styles/global';
+import { Container, Header } from '../../styles/global';
 
 function Main({
   users, prizes, generate, history,
@@ -46,7 +46,7 @@ function Main({
       >
         <h1>Rocket Prizes</h1>
         <form onSubmit={e => clickHandle(e)}>
-          <button type="submit">
+          <button type="submit" style={{ minWidth: '200px' }}>
             <i className="fa fa-cube" aria-hidden="true" />
             Sortear
           </button>
